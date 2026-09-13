@@ -33,7 +33,7 @@ st.subheader("Sales Trend Over Time")
 monthly = monthly_sales(df)
 trend_fig = px.line(monthly, x="month", y="sales", markers=True)
 trend_fig.update_layout(xaxis_title="Month", yaxis_title="Sales ($)")
-st.plotly_chart(trend_fig, use_container_width=True)
+st.plotly_chart(trend_fig, width="stretch")
 
 st.subheader("Category and Region Breakdown")
 col3, col4 = st.columns(2)
@@ -44,7 +44,7 @@ with col3:
     category_fig = px.bar(category_df, x="sales", y="category", orientation="h")
     category_fig.update_layout(xaxis_title="Sales ($)", yaxis_title="Category")
     category_fig.update_yaxes(autorange="reversed")
-    st.plotly_chart(category_fig, use_container_width=True)
+    st.plotly_chart(category_fig, width="stretch")
 
 with col4:
     st.write("Sales by Region")
@@ -52,4 +52,4 @@ with col4:
     region_fig = px.bar(region_df, x="sales", y="region", orientation="h")
     region_fig.update_layout(xaxis_title="Sales ($)", yaxis_title="Region")
     region_fig.update_yaxes(autorange="reversed")
-    st.plotly_chart(region_fig, use_container_width=True)
+    st.plotly_chart(region_fig, width="stretch")

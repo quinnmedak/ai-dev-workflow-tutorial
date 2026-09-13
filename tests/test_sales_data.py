@@ -122,3 +122,11 @@ def test_sales_by_region_matches_real_data_all_regions():
     result = sales_by_region(df)
     assert set(result["region"]) == {"North", "South", "East", "West"}
     assert len(result) == 4
+
+
+def test_full_dataset_matches_prd_expected_output():
+    df = load_sales_data("data/sales-data.csv")
+    assert total_orders(df) == 482
+    assert total_sales(df) == pytest.approx(116500.21, abs=0.01)
+    assert sales_by_category(df).iloc[0]["category"] == "Electronics"
+    assert set(sales_by_region(df)["region"]) == {"North", "South", "East", "West"}
