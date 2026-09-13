@@ -68,3 +68,4 @@ Set up the Python project structure, dependencies, and Streamlit entry point.
 - [x] `streamlit run app.py` launches a blank/placeholder app with no errors
 
 Commit: b073f70
+Notes: First pass, Claude accidentally bundled the TASKS.md "move to In Progress" edit into the same commit as app.py/requirements.txt (leftover staged files); had to reset and split them. That run was undone entirely and redone step-by-step in manual mode. No other deviations from the plan.
