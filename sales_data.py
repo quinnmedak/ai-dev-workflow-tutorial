@@ -18,3 +18,11 @@ def load_sales_data(csv_path: str) -> pd.DataFrame:
         raise ValueError(f"Sales data is missing required columns: {missing}")
 
     return df
+
+
+def total_sales(df: pd.DataFrame) -> float:
+    return float(df["total_amount"].sum())
+
+
+def total_orders(df: pd.DataFrame) -> int:
+    return len(df)

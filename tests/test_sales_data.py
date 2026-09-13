@@ -30,3 +30,30 @@ def test_load_sales_data_missing_required_column_raises_value_error(tmp_path):
     bad_csv.write_text("date,order_id,product\n2024-01-01,ORD-1,Widget\n")
     with pytest.raises(ValueError):
         load_sales_data(str(bad_csv))
+
+
+from sales_data import total_sales, total_orders
+
+
+def _fixture_df():
+    return pd.DataFrame({
+        "total_amount": [100.0, 50.0, 25.0],
+    })
+
+
+def test_total_sales_sums_total_amount():
+    assert total_sales(_fixture_df()) == 175.0
+
+
+def test_total_orders_counts_rows():
+    assert total_orders(_fixture_df()) == 3
+
+
+def test_total_sales_matches_expected_value_for_real_data():
+    df = load_sales_data("data/sales-data.csv")
+    assert total_sales(df) == pytest.approx(116500.21, abs=0.01)
+
+
+def test_total_orders_matches_expected_value_for_real_data():
+    df = load_sales_data("data/sales-data.csv")
+    assert total_orders(df) == 482
