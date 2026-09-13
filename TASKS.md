@@ -10,14 +10,6 @@ This file tracks all work for the ShopSmart e-commerce analytics dashboard, as d
 
 ## To Do
 
-### TASK-3: KPI cards implementation
-Display Total Sales and Total Orders as formatted KPI cards.
-- [ ] Total Sales displayed as currency (e.g., $116,500)
-- [ ] Total Orders displayed as a formatted count (482)
-- [ ] Values match expected calculations from the CSV
-
-Commit:
-
 ### TASK-4: Sales trend chart
 Add an interactive line chart showing sales over time.
 - [ ] Line chart renders sales by date/month with correct values
@@ -51,6 +43,14 @@ Deploy the finished dashboard and confirm public access.
 Commit:
 
 ## In Progress
+
+### TASK-3: KPI cards implementation
+Display Total Sales and Total Orders as formatted KPI cards.
+- [ ] Total Sales displayed as currency (e.g., $116,500)
+- [ ] Total Orders displayed as a formatted count (482)
+- [ ] Values match expected calculations from the CSV
+
+Commit:
 
 ## Done
 
