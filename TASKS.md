@@ -36,8 +36,8 @@ Add bar charts for sales by category and by region.
 - [x] Region bar chart shows all 4 regions, sorted highest to lowest
 - [x] Both charts have interactive tooltips with exact values
 
-Commit: af4f35d
-Notes: clean. No deviations from the plan.
+Commit: 3c123c4
+Notes: Changed category/region charts from vertical to horizontal bar charts per user request, after initial implementation matched the plan's vertical bars exactly.
 
 ### TASK-4: Sales trend chart
 Add an interactive line chart showing sales over time.
