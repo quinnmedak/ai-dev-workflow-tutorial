@@ -11,11 +11,13 @@ def load_sales_data(csv_path: str) -> pd.DataFrame:
     if not os.path.exists(csv_path):
         raise FileNotFoundError(f"Sales data file not found: {csv_path}")
 
-    df = pd.read_csv(csv_path, parse_dates=["date"])
+    df = pd.read_csv(csv_path)
 
     missing = [col for col in REQUIRED_COLUMNS if col not in df.columns]
     if missing:
         raise ValueError(f"Sales data is missing required columns: {missing}")
+
+    df["date"] = pd.to_datetime(df["date"])
 
     return df
 
@@ -31,18 +33,20 @@ def total_orders(df: pd.DataFrame) -> int:
 def monthly_sales(df: pd.DataFrame) -> pd.DataFrame:
     monthly = df.copy()
     monthly["month"] = monthly["date"].dt.strftime("%Y-%m")
-    result = monthly.groupby("month")["total_amount"].sum().reset_index()
+    result = monthly.groupby("month", dropna=False)["total_amount"].sum().reset_index()
     result = result.rename(columns={"total_amount": "sales"})
     return result.sort_values("month").reset_index(drop=True)
 
 
-def sales_by_category(df: pd.DataFrame) -> pd.DataFrame:
-    result = df.groupby("category")["total_amount"].sum().reset_index()
+def _sales_by(df: pd.DataFrame, column: str) -> pd.DataFrame:
+    result = df.groupby(column, dropna=False)["total_amount"].sum().reset_index()
     result = result.rename(columns={"total_amount": "sales"})
     return result.sort_values("sales", ascending=False).reset_index(drop=True)
+
+
+def sales_by_category(df: pd.DataFrame) -> pd.DataFrame:
+    return _sales_by(df, "category")
 
 
 def sales_by_region(df: pd.DataFrame) -> pd.DataFrame:
-    result = df.groupby("region")["total_amount"].sum().reset_index()
-    result = result.rename(columns={"total_amount": "sales"})
-    return result.sort_values("sales", ascending=False).reset_index(drop=True)
+    return _sales_by(df, "region")

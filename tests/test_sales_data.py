@@ -32,6 +32,26 @@ def test_load_sales_data_missing_required_column_raises_value_error(tmp_path):
         load_sales_data(str(bad_csv))
 
 
+def test_load_sales_data_missing_date_column_raises_friendly_value_error(tmp_path):
+    bad_csv = tmp_path / "bad.csv"
+    bad_csv.write_text(
+        "order_id,product,category,region,quantity,unit_price,total_amount\n"
+        "ORD-1,Widget,Electronics,North,1,10.0,10.0\n"
+    )
+    with pytest.raises(ValueError, match="missing required columns"):
+        load_sales_data(str(bad_csv))
+
+
+def test_load_sales_data_unparseable_date_raises_value_error(tmp_path):
+    bad_csv = tmp_path / "bad.csv"
+    bad_csv.write_text(
+        "date,order_id,product,category,region,quantity,unit_price,total_amount\n"
+        "not-a-date,ORD-1,Widget,Electronics,North,1,10.0,10.0\n"
+    )
+    with pytest.raises(ValueError):
+        load_sales_data(str(bad_csv))
+
+
 from sales_data import total_sales, total_orders
 
 
@@ -122,6 +142,33 @@ def test_sales_by_region_matches_real_data_all_regions():
     result = sales_by_region(df)
     assert set(result["region"]) == {"North", "South", "East", "West"}
     assert len(result) == 4
+
+
+def test_sales_by_category_keeps_rows_with_null_category():
+    df = pd.DataFrame({
+        "category": ["Electronics", None],
+        "total_amount": [100.0, 15.0],
+    })
+    result = sales_by_category(df)
+    assert result["sales"].sum() == total_sales(df)
+
+
+def test_sales_by_region_keeps_rows_with_null_region():
+    df = pd.DataFrame({
+        "region": ["North", None],
+        "total_amount": [100.0, 15.0],
+    })
+    result = sales_by_region(df)
+    assert result["sales"].sum() == total_sales(df)
+
+
+def test_monthly_sales_keeps_rows_with_null_date():
+    df = pd.DataFrame({
+        "date": pd.to_datetime(["2024-01-05", None]),
+        "total_amount": [100.0, 15.0],
+    })
+    result = monthly_sales(df)
+    assert result["sales"].sum() == total_sales(df)
 
 
 def test_full_dataset_matches_prd_expected_output():
