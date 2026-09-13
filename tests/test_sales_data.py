@@ -85,3 +85,40 @@ def test_monthly_sales_has_twelve_months_for_real_data():
     df = load_sales_data("data/sales-data.csv")
     result = monthly_sales(df)
     assert len(result) == 12
+
+
+from sales_data import sales_by_category, sales_by_region
+
+
+def test_sales_by_category_groups_and_sorts_descending():
+    df = pd.DataFrame({
+        "category": ["Audio", "Electronics", "Audio"],
+        "total_amount": [10.0, 100.0, 5.0],
+    })
+    result = sales_by_category(df)
+    assert list(result["category"]) == ["Electronics", "Audio"]
+    assert list(result["sales"]) == [100.0, 15.0]
+
+
+def test_sales_by_region_groups_and_sorts_descending():
+    df = pd.DataFrame({
+        "region": ["South", "North", "South"],
+        "total_amount": [10.0, 100.0, 5.0],
+    })
+    result = sales_by_region(df)
+    assert list(result["region"]) == ["North", "South"]
+    assert list(result["sales"]) == [100.0, 15.0]
+
+
+def test_sales_by_category_matches_real_data_top_category():
+    df = load_sales_data("data/sales-data.csv")
+    result = sales_by_category(df)
+    assert result.iloc[0]["category"] == "Electronics"
+    assert len(result) == 5
+
+
+def test_sales_by_region_matches_real_data_all_regions():
+    df = load_sales_data("data/sales-data.csv")
+    result = sales_by_region(df)
+    assert set(result["region"]) == {"North", "South", "East", "West"}
+    assert len(result) == 4

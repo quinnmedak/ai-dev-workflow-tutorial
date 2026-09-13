@@ -34,3 +34,15 @@ def monthly_sales(df: pd.DataFrame) -> pd.DataFrame:
     result = monthly.groupby("month")["total_amount"].sum().reset_index()
     result = result.rename(columns={"total_amount": "sales"})
     return result.sort_values("month").reset_index(drop=True)
+
+
+def sales_by_category(df: pd.DataFrame) -> pd.DataFrame:
+    result = df.groupby("category")["total_amount"].sum().reset_index()
+    result = result.rename(columns={"total_amount": "sales"})
+    return result.sort_values("sales", ascending=False).reset_index(drop=True)
+
+
+def sales_by_region(df: pd.DataFrame) -> pd.DataFrame:
+    result = df.groupby("region")["total_amount"].sum().reset_index()
+    result = result.rename(columns={"total_amount": "sales"})
+    return result.sort_values("sales", ascending=False).reset_index(drop=True)
