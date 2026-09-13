@@ -10,13 +10,6 @@ This file tracks all work for the ShopSmart e-commerce analytics dashboard, as d
 
 ## To Do
 
-### TASK-2: Data loading and basic structure
-Load sales-data.csv into a Pandas DataFrame and validate its structure.
-- [ ] CSV loads into a DataFrame with correct column types (date, numeric, categorical)
-- [ ] Basic validation confirms 482 records load without errors
-
-Commit:
-
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as formatted KPI cards.
 - [ ] Total Sales displayed as currency (e.g., $116,500)
@@ -58,6 +51,13 @@ Deploy the finished dashboard and confirm public access.
 Commit:
 
 ## In Progress
+
+### TASK-2: Data loading and basic structure
+Load sales-data.csv into a Pandas DataFrame and validate its structure.
+- [ ] CSV loads into a DataFrame with correct column types (date, numeric, categorical)
+- [ ] Basic validation confirms 482 records load without errors
+
+Commit:
 
 ## Done
 
