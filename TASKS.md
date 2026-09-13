@@ -20,15 +20,16 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-6: Testing and refinement
 Verify the dashboard meets all acceptance criteria and polish the presentation.
-- [ ] Dashboard loads within 5 seconds with no errors or warnings
-- [ ] All PRD acceptance criteria checked off and verified against expected output values
-- [ ] Layout and labels are clear enough for an executive presentation
+- [x] Dashboard loads within 5 seconds with no errors or warnings
+- [x] All PRD acceptance criteria checked off and verified against expected output values
+- [x] Layout and labels are clear enough for an executive presentation
 
-Commit:
-
-## Done
+Commit: 19cd4e0
+Notes: Found and fixed a deprecation warning (use_container_width=True → width="stretch" on all three st.plotly_chart calls) while verifying the "no errors or warnings" criterion — not in the original plan snippets, which predate the deprecation.
 
 ### TASK-5: Category and region breakdowns
 Add bar charts for sales by category and by region.
