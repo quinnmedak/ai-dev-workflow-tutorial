@@ -28,15 +28,16 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-5: Category and region breakdowns
 Add bar charts for sales by category and by region.
-- [ ] Category bar chart shows all 5 categories, sorted highest to lowest
-- [ ] Region bar chart shows all 4 regions, sorted highest to lowest
-- [ ] Both charts have interactive tooltips with exact values
+- [x] Category bar chart shows all 5 categories, sorted highest to lowest
+- [x] Region bar chart shows all 4 regions, sorted highest to lowest
+- [x] Both charts have interactive tooltips with exact values
 
-Commit:
-
-## Done
+Commit: af4f35d
+Notes: clean. No deviations from the plan.
 
 ### TASK-4: Sales trend chart
 Add an interactive line chart showing sales over time.
