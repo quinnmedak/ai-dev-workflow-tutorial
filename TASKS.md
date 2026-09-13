@@ -10,14 +10,6 @@ This file tracks all work for the ShopSmart e-commerce analytics dashboard, as d
 
 ## To Do
 
-### TASK-5: Category and region breakdowns
-Add bar charts for sales by category and by region.
-- [ ] Category bar chart shows all 5 categories, sorted highest to lowest
-- [ ] Region bar chart shows all 4 regions, sorted highest to lowest
-- [ ] Both charts have interactive tooltips with exact values
-
-Commit:
-
 ### TASK-6: Testing and refinement
 Verify the dashboard meets all acceptance criteria and polish the presentation.
 - [ ] Dashboard loads within 5 seconds with no errors or warnings
@@ -35,6 +27,14 @@ Deploy the finished dashboard and confirm public access.
 Commit:
 
 ## In Progress
+
+### TASK-5: Category and region breakdowns
+Add bar charts for sales by category and by region.
+- [ ] Category bar chart shows all 5 categories, sorted highest to lowest
+- [ ] Region bar chart shows all 4 regions, sorted highest to lowest
+- [ ] Both charts have interactive tooltips with exact values
+
+Commit:
 
 ## Done
 
