@@ -10,17 +10,19 @@ This file tracks all work for the ShopSmart e-commerce analytics dashboard, as d
 
 ## To Do
 
-### TASK-7: Deployment to Streamlit Community Cloud
-Deploy the finished dashboard and confirm public access.
-- [ ] App deployed to Streamlit Community Cloud
-- [ ] Public shareable URL loads the dashboard correctly
-- [ ] Deployed version matches local behavior (no missing data or errors)
-
-Commit:
-
 ## In Progress
 
 ## Done
+
+### TASK-7: Deployment to Streamlit Community Cloud
+Deploy the finished dashboard and confirm public access.
+- [x] App deployed to Streamlit Community Cloud
+- [x] Public shareable URL loads the dashboard correctly
+- [x] Deployed version matches local behavior (no missing data or errors)
+
+Commit: 5f172a2
+URL: https://ai-dev-workflow-tutorial-erbpkfc36lwnyiktbfhwsy.streamlit.app/
+Notes: clean. Deployed from main after merging feature/sales-dashboard.
 
 ### TASK-6: Testing and refinement
 Verify the dashboard meets all acceptance criteria and polish the presentation.
