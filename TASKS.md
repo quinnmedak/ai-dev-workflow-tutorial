@@ -52,14 +52,15 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-2: Data loading and basic structure
 Load sales-data.csv into a Pandas DataFrame and validate its structure.
-- [ ] CSV loads into a DataFrame with correct column types (date, numeric, categorical)
-- [ ] Basic validation confirms 482 records load without errors
+- [x] CSV loads into a DataFrame with correct column types (date, numeric, categorical)
+- [x] Basic validation confirms 482 records load without errors
 
-Commit:
-
-## Done
+Commit: 5dd88aa
+Notes: Bare `pytest` couldn't find sales_data.py at the project root (only `python -m pytest` adds cwd to sys.path) — added pytest.ini with `pythonpath = .` so plain `pytest` works as documented in the plan. No other deviations.
 
 ### TASK-1: Environment setup and project initialization
 Set up the Python project structure, dependencies, and Streamlit entry point.
