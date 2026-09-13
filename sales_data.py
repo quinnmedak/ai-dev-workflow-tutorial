@@ -26,3 +26,11 @@ def total_sales(df: pd.DataFrame) -> float:
 
 def total_orders(df: pd.DataFrame) -> int:
     return len(df)
+
+
+def monthly_sales(df: pd.DataFrame) -> pd.DataFrame:
+    monthly = df.copy()
+    monthly["month"] = monthly["date"].dt.strftime("%Y-%m")
+    result = monthly.groupby("month")["total_amount"].sum().reset_index()
+    result = result.rename(columns={"total_amount": "sales"})
+    return result.sort_values("month").reset_index(drop=True)

@@ -57,3 +57,31 @@ def test_total_sales_matches_expected_value_for_real_data():
 def test_total_orders_matches_expected_value_for_real_data():
     df = load_sales_data("data/sales-data.csv")
     assert total_orders(df) == 482
+
+
+from sales_data import monthly_sales
+
+
+def test_monthly_sales_groups_by_month_and_sums():
+    df = pd.DataFrame({
+        "date": pd.to_datetime(["2024-01-05", "2024-01-20", "2024-02-10"]),
+        "total_amount": [100.0, 50.0, 25.0],
+    })
+    result = monthly_sales(df)
+    assert list(result["month"]) == ["2024-01", "2024-02"]
+    assert list(result["sales"]) == [150.0, 25.0]
+
+
+def test_monthly_sales_sorted_chronologically():
+    df = pd.DataFrame({
+        "date": pd.to_datetime(["2024-03-01", "2024-01-01", "2024-02-01"]),
+        "total_amount": [1.0, 1.0, 1.0],
+    })
+    result = monthly_sales(df)
+    assert list(result["month"]) == ["2024-01", "2024-02", "2024-03"]
+
+
+def test_monthly_sales_has_twelve_months_for_real_data():
+    df = load_sales_data("data/sales-data.csv")
+    result = monthly_sales(df)
+    assert len(result) == 12
