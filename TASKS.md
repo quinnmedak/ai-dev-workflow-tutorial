@@ -36,15 +36,16 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-4: Sales trend chart
 Add an interactive line chart showing sales over time.
-- [ ] Line chart renders sales by date/month with correct values
-- [ ] X-axis is time, Y-axis is sales amount
-- [ ] Tooltips show exact values on hover
+- [x] Line chart renders sales by date/month with correct values
+- [x] X-axis is time, Y-axis is sales amount
+- [x] Tooltips show exact values on hover
 
-Commit:
-
-## Done
+Commit: 349970a
+Notes: clean. No deviations from the plan.
 
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as formatted KPI cards.
